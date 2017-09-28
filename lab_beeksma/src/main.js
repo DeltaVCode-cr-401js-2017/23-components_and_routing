@@ -87,7 +87,7 @@ class App extends React.Component {
           <section>
             <Switch>
               <Route exact path="/" component={() => <h1>Home</h1>} />
-              <Route exact path="/notes" render={() => (<NoteCreateForm  createNote={this.createNote}/>)} />
+              <Route exact path="/notes" component={() => (<NoteCreateForm  createNote={this.createNote}/>)} />
               <Route component={() => <h1>Not Found</h1>} />
             </Switch>
           </section>
