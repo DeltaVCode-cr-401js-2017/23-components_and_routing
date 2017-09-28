@@ -75,9 +75,17 @@ class App extends React.Component {
 
   render(){
     return(
-      <div>
-        <NoteCreateForm createNote={this.createNote}/>
-      </div>
+      <main>
+        <BrowserRouter>
+          <section>
+            <Switch>
+              <Route exact path="/" component={() => <h1>Home</h1>} />
+              <Route exact path="/notes" component={NoteCreateForm} />
+              <Route component={() => <h1>Not Found</h1>} />
+            </Switch>
+          </section>
+        </BrowserRouter>
+      </main>
     );
   }
 }
