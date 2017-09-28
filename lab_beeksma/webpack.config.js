@@ -33,7 +33,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Day 22',
+      title: 'Day 23 Note App',
       minify: {
         collapseWhitespace: true
       },
