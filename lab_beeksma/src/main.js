@@ -1,5 +1,7 @@
 import './style/main.scss';
 
+const uuidv1 = require('uuid/v1');
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -9,7 +11,7 @@ class NoteCreateForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      id: '',
+      id: uuidv1(),
       edited: false,
       completed: false,
       content: '',
@@ -19,13 +21,18 @@ class NoteCreateForm extends React.Component {
   }
 
   handleContentChange(e) {
-    this.setState({content: e.target.value});
+    this.setState({
+      content: e.target.value,
+    });
   }
 
   handleSubmit(e){
     e.preventDefault();
-    console.log(this.state);
     this.props.createNote(this.state.id,this.state.edited,this.state.completed,this.state.content);
+    this.setState({
+      id: uuidv1(),
+      content: ''
+    });
   }
 
   render(){
