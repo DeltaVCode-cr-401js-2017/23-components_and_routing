@@ -29,8 +29,10 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     stats: 'errors-only',
-    open: true
+    open: true,
+    historyApiFallback: true
   },
+  devtool: 'cheap-module-eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Day 23 Note App',
