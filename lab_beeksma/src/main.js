@@ -25,6 +25,7 @@ class NoteCreateForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     console.log(this.state);
+    this.props.createNote(this.state.id,this.state.edited,this.state.completed,this.state.content);
   }
 
   render(){
@@ -50,12 +51,32 @@ class App extends React.Component {
     this.state = {
       notes: [],
     };
+    this.createNote = this.createNote.bind(this);
+  }
+
+  componentDidMount(){
+    console.log('mounted');
+  }
+
+  componentDidUpdate(){
+    console.log('State', this.state);
+  }
+
+  createNote(id,edited,completed,content){
+    let newNote = {};
+    newNote.id = id;
+    newNote.edited = edited;
+    newNote.completed = completed;
+    newNote.content = content;
+    this.setState({
+      notes: this.state.notes.concat([{newNote}])
+    });
   }
 
   render(){
     return(
       <div>
-        <NoteCreateForm />
+        <NoteCreateForm createNote={this.createNote}/>
       </div>
     );
   }
