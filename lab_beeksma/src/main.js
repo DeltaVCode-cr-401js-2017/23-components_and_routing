@@ -15,16 +15,21 @@ class NoteCreateForm extends React.Component {
       content: '',
     };
     this.handleContentChange = this.handleContentChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleContentChange(e) {
     this.setState({content: e.target.value});
   }
 
+  handleSubmit(e){
+    e.preventDefault();
+    console.log(this.state);
+  }
 
   render(){
     return(
-      <form onSubmit=''>
+      <form onSubmit={this.handleSubmit}>
         <label>Create a Note:
         <input
           type='text'
@@ -33,6 +38,7 @@ class NoteCreateForm extends React.Component {
           value={this.state.content}
           onChange={this.handleContentChange}/>
         </label>
+        <button type="submit">Add Note</button>
       </form>
     );
   }
