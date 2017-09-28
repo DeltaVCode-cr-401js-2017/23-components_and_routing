@@ -14,7 +14,13 @@ class NoteCreateForm extends React.Component {
       completed: false,
       content: '',
     };
+    this.handleContentChange = this.handleContentChange.bind(this);
   }
+
+  handleContentChange(e) {
+    this.setState({content: e.target.value});
+  }
+
 
   render(){
     return(
@@ -25,7 +31,7 @@ class NoteCreateForm extends React.Component {
           name='note'
           placeholder='...'
           value={this.state.content}
-          onChange=''/>
+          onChange={this.handleContentChange}/>
         </label>
       </form>
     );
